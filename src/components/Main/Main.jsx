@@ -5,12 +5,13 @@ import "./Main.css";
 import "../../vendor/fonts.css";
 
 function Main({ weatherData, handleCardClick }) {
+  console.log("Temperature object:", weatherData.temp);
   return (
     <main>
-      <WeatherCard />
+      <WeatherCard weatherData={weatherData} />
       <section className="cards">
         <p className="cards__text">
-          Today is 75 &deg; F/ You May want to wear:
+          Today is {weatherData.temp.F} &deg;F/ You May want to wear:
         </p>
         <ul className="cards__list">
           {defaultClothingItems
