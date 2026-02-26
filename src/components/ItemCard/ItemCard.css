@@ -12,6 +12,11 @@
   background-color: #ffffff;
   color: #000000;
   opacity: 60%;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: 20px;
+  font-size: 16px;
+  font-style: bold;
 }
 
 .card__image {

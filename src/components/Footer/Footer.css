@@ -1,0 +1,25 @@
+.footer {
+  font-size: 16px;
+  line-height: 20px;
+  font-style: medium;
+  font-weight: 500;
+  line-height: 20px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 24px;
+  padding-top: 171px;
+}
+
+.footer__name {
+  margin: 0;
+}
+
+.footer__date {
+  margin: 0;
+}
