@@ -16,7 +16,7 @@
   visibility: hidden;
 }
 
-.modalForm__is-opened {
+.modal__is-opened {
   visibility: visible;
 }
 
