@@ -50,6 +50,7 @@ function App() {
       <ModalWithForm
         title="New Garment"
         buttonText="Add Garment"
+        name="add-garment"
         activeModal={activeModal}
         onClose={closeActiveModal}
       >

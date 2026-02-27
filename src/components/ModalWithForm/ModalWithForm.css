@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 20px;
   font-weight: 700;
@@ -16,18 +16,25 @@
   visibility: hidden;
 }
 
-.modal__is-opened {
+.modalForm__is-opened {
   visibility: visible;
 }
 
 .modal__title {
   margin: 0;
+  padding-bottom: 24px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 1);
 }
 
 .modal__close {
   position: absolute;
   top: 20px;
   right: 28px;
+  border: none;
+  background: none;
+  width: 16px;
+  height: 16px;
 }
 
 .modal__content {
@@ -36,8 +43,12 @@
   padding: 28px 28px 36px;
   border-radius: 20px;
   border: 1px;
-  max-width: 496px;
   box-sizing: border-box;
+}
+
+.modal_type_add-garment .modal__content {
+  max-width: 496px;
+  max-height: 436px;
   width: 100%;
 }
 
@@ -49,6 +60,28 @@
 
 .modal__input {
   display: block;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  background: transparent;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.modal__input:focus {
+  border-bottom: 2px solid #000;
+}
+
+.modal__label {
+  padding-bottom: 24px;
+}
+
+.modal__label_type_radio {
+  padding-bottom: 7px;
+}
+
+.modal__legend {
+  padding-bottom: 12px;
 }
 
 .modal__submit {
@@ -63,6 +96,8 @@
   left: 28px;
   bottom: 36px;
   right: 344px;
+  width: 124px;
+  height: 36px;
 }
 
 .modal__radio-buttons {
@@ -70,4 +105,5 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }

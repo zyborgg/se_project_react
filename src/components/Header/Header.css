@@ -7,7 +7,9 @@
   line-height: 24px;
   font-weight: 700;
   font-style: bold;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "Cabinent Grotesk", Arial, sans-serif;
+  width: 100%;
+  margin: 0;
 }
 
 .header__logo {
