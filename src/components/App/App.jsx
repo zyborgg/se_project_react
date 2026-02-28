@@ -15,9 +15,18 @@ function App() {
     temp: { F: 999, C: 999 },
     city: "",
   });
+
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
+  const [selectedCard, setSelectedCard] = useState({
+    _id: "",
+    name: "",
+    weather: "",
+    link: "",
+  });
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [weather, setWeather] = useState("");
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
@@ -40,6 +49,14 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    if (!activeModal) {
+      setName("");
+      setImageUrl("");
+      setWeather("");
+    }
+  }, [activeModal]);
 
   return (
     <div className="app">

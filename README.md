@@ -4,7 +4,7 @@ Project: WTWR an app for fashion suggestions based on the local weather using tw
 
 this app used React/ JSX, JS, HTML, and CSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+github pages:
 
 Currently, two official plugins are available:
 
