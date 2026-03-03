@@ -58,6 +58,20 @@ function App() {
     }
   }, [activeModal]);
 
+  useEffect(() => {
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, []);
+
   return (
     <div className="app">
       <div className="app__content">

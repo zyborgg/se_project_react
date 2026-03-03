@@ -13,6 +13,11 @@ function ModalWithForm({
   return (
     <div
       className={`modal modal_type_${name} ${isOpen ? "modal_is-opened" : ""}`}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
     >
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
