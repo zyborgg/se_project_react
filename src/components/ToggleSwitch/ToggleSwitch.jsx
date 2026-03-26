@@ -12,6 +12,7 @@ export default function ToggleSwitch() {
       <input
         onChange={handleToggleSwitchChange}
         type="checkbox"
+        id="temperature-toggle"
         className="toggle-switch__checkbox"
       />
       <span className="toggle-switch__circle"></span>
@@ -36,3 +37,7 @@ export default function ToggleSwitch() {
     </label>
   );
 }
+
+// CSS notes
+// transform: translateX(...)
+// mix-blend=module: ...
