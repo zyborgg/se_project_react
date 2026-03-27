@@ -1,8 +1,14 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
+const AddItemModal = ({ isOpen, handleSubmit, onClose }) => {
   return (
-    <ModalWithForm>
+    <ModalWithForm
+      title="New Garment"
+      name="add-garment"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+    >
       <label htmlFor="name" className="modal__label">
         Name{" "}
         <input

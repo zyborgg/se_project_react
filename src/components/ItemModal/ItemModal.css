@@ -19,6 +19,7 @@
   font-weight: 700;
   font-style: bold;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .modal__is-opened {
@@ -32,6 +33,7 @@
   height: 498px;
   border-radius: 20px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .itemModal__close {
