@@ -52,6 +52,10 @@ function App() {
     setSelectedCard(card);
   };
 
+  const onAddItem = (data) => {
+    evt.preventDefault();
+  };
+
   useEffect(() => {
     getWeather(coordinates, apiKey)
       .then((data) => {
@@ -113,6 +117,7 @@ function App() {
           buttonText="Add Garment"
           name="add-garment"
           onClose={closeActiveModal}
+          onAddItem={onAddItem}
         />
         <ItemModal
           isOpen={activeModal === "preview"}
