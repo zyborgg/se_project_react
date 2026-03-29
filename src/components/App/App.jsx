@@ -52,9 +52,27 @@ function App() {
     setSelectedCard(card);
   };
 
-  const onAddItem = (data) => {
+  /// new stuff from part 4b
+  const onAddItem = (inputValues) => {
+    // call the fetch function
+    // .then((data) => {}) includes all the stuff below
+    const newCardData = {
+      name: inputValues.name,
+      link: inputValues.link,
+      weather: inputValues.weather,
+    };
+    // dont use newCardData
+    // ID will be included in the response data
+    setClothingItems([...clothingItems, inputValues]);
     evt.preventDefault();
+    closeAllModals();
+    // .catch()
   };
+
+  // const closeAllModals = () => {
+  //   setActiveModal("");
+  // };
+  // end of new stuff
 
   useEffect(() => {
     getWeather(coordinates, apiKey)
