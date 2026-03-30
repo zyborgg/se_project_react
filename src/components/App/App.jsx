@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-// import Profile from "../Profile/Profile";
+import Profile from "../Profile/Profile";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { coordinates, apiKey } from "../../utils/constants";
@@ -123,8 +123,6 @@ function App() {
                 />
               }
             />
-          </Routes>
-          <Routes>
             <Route path="/profile" element={<Profile />} />
           </Routes>
           <Footer />
