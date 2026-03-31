@@ -39,6 +39,11 @@
   margin: 0;
 }
 
+.header__nav-link {
+  color: #000000;
+  text-decoration: none;
+}
+
 /* .header__buttons {
   display: flex;
   gap: 10px;

@@ -1,5 +1,15 @@
-function Profile() {
-  return <div>Profile Page</div>;
-}
+import ClothesSection from "../ClothesSection/ClothesSection";
+import SideBar from "../SideBar/Sidebar";
+import "./Profile.css";
 
-export default Profile;
+export default function Profile({ clothingItems, handleCardClick }) {
+  return (
+    <section className="profile">
+      <SideBar />
+      <ClothesSection
+        handleCardClick={handleCardClick}
+        clothingItems={clothingItems}
+      />
+    </section>
+  );
+}
