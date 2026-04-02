@@ -15,7 +15,7 @@ function ItemModal({ onClose, card, isOpen }) {
         <button onClick={onClose} type="button" className="itemModal__close">
           <img src={whiteCloseButton} alt="close modal" />
         </button>
-        <img src={card.link} alt={card.name} className="itemModal__image" />
+        <img src={card.imageUrl} alt={card.name} className="itemModal__image" />
         <div className="itemModal__footer">
           <h2 className="itemModal__caption">{card.name}</h2>
           <p className="itemModal__weather">Weather: {card.weather} </p>

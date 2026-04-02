@@ -8,9 +8,9 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { defaultClothingItems } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import { addItem, getItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -26,14 +26,16 @@ function App() {
     _id: "",
     name: "",
     weather: "",
-    link: "",
+    imageUrl: "",
   });
 
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  // build new use state for delete card functionality
+  const [] = useState("");
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -52,27 +54,19 @@ function App() {
     setSelectedCard(card);
   };
 
-  /// new stuff from part 4b
   const onAddItem = (inputValues) => {
-    // call the fetch function
-    // .then((data) => {}) includes all the stuff below
     const newCardData = {
       name: inputValues.name,
-      link: inputValues.link,
+      imageUrl: inputValues.imageUrl,
       weather: inputValues.weather,
     };
-    // dont use newCardData
-    // ID will be included in the response data
-    setClothingItems([...clothingItems, inputValues]);
-    evt.preventDefault();
-    closeAllModals();
-    // .catch()
+    addItem(newCardData)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
-
-  // const closeAllModals = () => {
-  //   setActiveModal("");
-  // };
-  // end of new stuff
 
   useEffect(() => {
     getWeather(coordinates, apiKey)
@@ -81,7 +75,21 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch(console.error);
+
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+      })
+      .catch(console.error);
   }, []);
+
+  // TODO add a delete button to the preview modal
+  // Declare a handler - deleteItemHandler
+  // pass handler to preview modal
+  // inside preview, pass the ID as an arguement to the handler (use pattern in item card)
+  // inside handler call the remove item function, pass it the ID
+  // .then() remove the item from the array
+  // use filter!
 
   useEffect(() => {
     if (!activeModal) {
