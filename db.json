@@ -101,6 +101,60 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "tank top",
+      "imageUrl": "https://gothclothco.com/cdn/shop/files/useless-corpse-metal-font-unisex-tank-toptank-topprintifygoth-cloth-co33410006932542282541-7535650_1200x.jpg?v=1751408437",
+      "weather": "hot",
+      "_id": 17
+    },
+    {
+      "name": "y2k longsleeve",
+      "imageUrl": "https://rockndollstore.com/cdn/shop/files/Se17e8b66cffe4cec9f85e7e11dd24fdcc.webp?v=1736401517",
+      "weather": "warm",
+      "_id": 19
+    },
+    {
+      "name": "y2l longsleeve",
+      "imageUrl": "https://rockndollstore.com/cdn/shop/files/Se17e8b66cffe4cec9f85e7e11dd24fdcc.webp?v=1736401517",
+      "weather": "warm",
+      "_id": 20
+    },
+    {
+      "name": "y2l longsleeve",
+      "imageUrl": "https://rockndollstore.com/cdn/shop/files/Se17e8b66cffe4cec9f85e7e11dd24fdcc.webp?v=1736401517",
+      "weather": "warm",
+      "_id": 21
+    },
+    {
+      "name": "y2k longsleeve",
+      "imageUrl": "https://rockndollstore.com/cdn/shop/files/Se17e8b66cffe4cec9f85e7e11dd24fdcc.webp?v=1736401517",
+      "weather": "warm",
+      "_id": 22
+    },
+    {
+      "name": "y2k longsleeve",
+      "imageUrl": "https://rockndollstore.com/cdn/shop/files/Se17e8b66cffe4cec9f85e7e11dd24fdcc.webp?v=1736401517",
+      "weather": "warm",
+      "_id": 23
+    },
+    {
+      "name": "y2k top",
+      "imageUrl": "https://rockndollstore.com/cdn/shop/files/Se17e8b66cffe4cec9f85e7e11dd24fdcc.webp?v=1736401517",
+      "weather": "warm",
+      "_id": 24
+    },
+    {
+      "name": "y2k longsleeve",
+      "imageUrl": "https://rockndollstore.com/cdn/shop/files/Se17e8b66cffe4cec9f85e7e11dd24fdcc.webp?v=1736401517",
+      "weather": "warm",
+      "_id": 26
+    },
+    {
+      "name": "y2k",
+      "imageUrl": "https://rockndollstore.com/cdn/shop/files/Se17e8b66cffe4cec9f85e7e11dd24fdcc.webp?v=1736401517",
+      "weather": "warm",
+      "_id": 27
     }
   ]
 }

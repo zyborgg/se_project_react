@@ -1,7 +1,13 @@
 import "./ItemModal.css";
 import whiteCloseButton from "../../assets/closeButtonWhite.svg";
 
-function ItemModal({ onClose, card, isOpen, onDelete }) {
+function ItemModal({
+  onClose,
+  card,
+  isOpen,
+  handleDelete,
+  openConfirmationModal,
+}) {
   return (
     <div
       className={`modal ${isOpen && "modal_is-opened"}`}
@@ -22,7 +28,7 @@ function ItemModal({ onClose, card, isOpen, onDelete }) {
           <button
             type="button"
             className="itemModal__delete"
-            onClick={() => onDelete(card)}
+            onClick={() => openConfirmationModal(card)}
           >
             Delete Item
           </button>

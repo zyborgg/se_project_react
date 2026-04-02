@@ -1,0 +1,41 @@
+.delete__modal {
+  visibility: hidden;
+  font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  font-style: bold;
+  line-height: 24px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 1px #0000003d;
+  background-color: #0000004d;
+  width: 670px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+}
+
+.modal__is-opened {
+  visibility: visible;
+}
+
+.delete__button {
+  color: #ff4d00;
+  border: none;
+}
+
+.delete__modal_close {
+  border: none;
+  background: none;
+}
+
+.deleteModal__content {
+  background-color: #ffffff;
+  position: relative;
+  padding: 28px 28px 36px;
+  border-radius: 20px;
+  border: 1px;
+  box-sizing: border-box;
+}

@@ -7,7 +7,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAddItem(values, handleReset);
+    onAddItem(values); // add handleReset after building it
   }
   // make handleReset function
   return (
