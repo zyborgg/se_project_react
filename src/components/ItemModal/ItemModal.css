@@ -71,3 +71,17 @@
   padding-bottom: 32px;
   margin: 0;
 }
+
+.itemModal__delete {
+  color: #ff4d00;
+  font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding-left: 366px;
+  position: relative;
+  bottom: 94px;
+}

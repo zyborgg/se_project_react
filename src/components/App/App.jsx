@@ -11,6 +11,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { addItem, getItems } from "../../utils/api";
+import { removeItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -34,8 +35,7 @@ function App() {
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  // build new use state for delete card functionality
-  const [] = useState("");
+  const [onDelete, setOnDelete] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -68,6 +68,19 @@ function App() {
       .catch(console.error);
   };
 
+  const openConfirmationModal = () => {};
+
+  const handleDelete = (item) => {
+    removeItem(item._id)
+      .then(() => {
+        setClothingItems(
+          clothingItems.filter((clothingItem) => clothingItem._id !== item._id),
+        );
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
   useEffect(() => {
     getWeather(coordinates, apiKey)
       .then((data) => {
@@ -82,14 +95,6 @@ function App() {
       })
       .catch(console.error);
   }, []);
-
-  // TODO add a delete button to the preview modal
-  // Declare a handler - deleteItemHandler
-  // pass handler to preview modal
-  // inside preview, pass the ID as an arguement to the handler (use pattern in item card)
-  // inside handler call the remove item function, pass it the ID
-  // .then() remove the item from the array
-  // use filter!
 
   useEffect(() => {
     if (!activeModal) {
@@ -137,6 +142,7 @@ function App() {
                 <Profile
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  onAddClick={handleAddClick}
                 />
               }
             />
@@ -155,6 +161,7 @@ function App() {
           isOpen={activeModal === "preview"}
           card={selectedCard}
           onClose={closeActiveModal}
+          onDelete={handleDelete}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
