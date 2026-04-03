@@ -71,7 +71,7 @@ function App() {
 
   const openConfirmationModal = (item) => {
     console.log("Modal opening!");
-    console.log("openConfirmationModal called with:", card);
+    // console.log("openConfirmationModal called with:", card);
     console.log("Setting activeModal to delete__modal");
     setActiveModal("delete__modal");
     setSelectedCard(item);
