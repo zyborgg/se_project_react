@@ -2,19 +2,18 @@
   visibility: hidden;
   font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
   font-size: 20px;
-  font-weight: 700;
+  /* font-weight: 700; */
   font-style: bold;
   line-height: 24px;
   cursor: pointer;
   border-radius: 20px;
   border: 1px #0000003d;
-  background-color: #0000004d;
-  width: 670px;
-  height: 280px;
+  /* width: 670px;
+  height: 280px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  /* position: fixed; */
 }
 
 .modal__is-opened {
@@ -24,18 +23,37 @@
 .delete__button {
   color: #ff4d00;
   border: none;
+  background: none;
+  font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
+  font-style: bold;
+}
+
+.delete__cancel-button {
+  border: none;
+  background: none;
+  font-style: bold;
+  font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
 }
 
 .delete__modal_close {
   border: none;
   background: none;
+  width: 16px;
+  height: 16px;
 }
 
-.deleteModal__content {
-  background-color: #ffffff;
-  position: relative;
-  padding: 28px 28px 36px;
+.delete__modal_content {
+  /* position: relative; */
   border-radius: 20px;
   border: 1px;
   box-sizing: border-box;
+}
+
+.delete__modal-title {
+  align-items: center;
+}
+
+.modal__button_container {
+  display: flex;
+  gap: 20px;
 }

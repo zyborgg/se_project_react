@@ -5,7 +5,7 @@ function ItemModal({
   onClose,
   card,
   isOpen,
-  handleDelete,
+  handleCardDelete,
   openConfirmationModal,
 }) {
   return (

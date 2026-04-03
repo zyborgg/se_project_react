@@ -69,16 +69,21 @@ function App() {
       .catch(console.error);
   };
 
-  const openConfirmationModal = (card) => {
+  const openConfirmationModal = (item) => {
+    console.log("Modal opening!");
+    console.log("openConfirmationModal called with:", card);
+    console.log("Setting activeModal to delete__modal");
     setActiveModal("delete__modal");
-    setSelectedCard(card);
+    setSelectedCard(item);
   };
 
-  const handleDelete = (item) => {
-    removeItem(item._id)
+  const handleCardDelete = (selectedCard) => {
+    removeItem(selectedCard._id)
       .then(() => {
         setClothingItems(
-          clothingItems.filter((clothingItem) => clothingItem._id !== item._id),
+          clothingItems.filter(
+            (clothingItem) => clothingItem._id !== selectedCard._id,
+          ),
         );
         closeActiveModal();
       })
@@ -165,12 +170,12 @@ function App() {
           isOpen={activeModal === "preview"}
           card={selectedCard}
           onClose={closeActiveModal}
-          onDelete={handleDelete}
+          onDelete={handleCardDelete}
           openConfirmationModal={openConfirmationModal}
         />
         <DeleteConfirmationModal
           isOpen={activeModal === "delete__modal"}
-          handleDelete={() => handleDelete(selectedCard)}
+          handleCardDelete={() => handleCardDelete(selectedCard)}
           onClose={closeActiveModal}
         />
       </div>
