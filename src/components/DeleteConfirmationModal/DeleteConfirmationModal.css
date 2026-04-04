@@ -21,6 +21,7 @@
   font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
   font-style: bold;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .delete__cancel-button {
@@ -30,6 +31,7 @@
   font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .delete__modal_close {
@@ -40,6 +42,7 @@
   top: 20px;
   right: 28px;
   position: absolute;
+  cursor: pointer;
 }
 
 .delete__modal_content {

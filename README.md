@@ -4,7 +4,7 @@ Project: WTWR an app for fashion suggestions based on the local weather using tw
 
 this app used React/ JSX, JS, HTML, and CSS
 
-github pages:
+Link to Pitch video: https://drive.google.com/file/d/1wc662aBtDE0b4KfeKYGEdPHfLplMttHS/view?usp=drive_link
 
 Currently, two official plugins are available:
 
