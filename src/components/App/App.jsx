@@ -55,7 +55,7 @@ function App() {
     setSelectedCard(card);
   };
 
-  const onAddItem = (inputValues) => {
+  const onAddItem = (inputValues, handleReset) => {
     const newCardData = {
       name: inputValues.name,
       imageUrl: inputValues.imageUrl,
@@ -65,14 +65,12 @@ function App() {
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         closeActiveModal();
+        handleReset();
       })
       .catch(console.error);
   };
 
   const openConfirmationModal = (item) => {
-    console.log("Modal opening!");
-    // console.log("openConfirmationModal called with:", card);
-    console.log("Setting activeModal to delete__modal");
     setActiveModal("delete__modal");
     setSelectedCard(item);
   };

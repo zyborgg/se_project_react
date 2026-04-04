@@ -85,7 +85,7 @@
 }
 
 .modal__submit {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #000000;
   color: #ffffff;
   border-radius: 4px;
   border-style: solid;
@@ -98,6 +98,16 @@
   right: 344px;
   width: 124px;
   height: 36px;
+}
+
+.modal__submit:disabled {
+  background-color: #0000003d;
+  cursor: not-allowed;
+}
+
+.modal__submit:hover {
+  cursor: pointer;
+  background-color: #0000006d;
 }
 
 .modal__radio-buttons {

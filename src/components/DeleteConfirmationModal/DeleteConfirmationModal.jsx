@@ -21,11 +21,12 @@ export function DeleteConfirmationModal({
           {" "}
           <img src={closeButton} alt="close modal" />
         </button>
-        <h2 className="delete__modal-title">
-          {" "}
-          Are you sure you want to delete this item?{" "}
-        </h2>
-        <p> This action is irreversible.</p>
+        <div className="delete__modal_text_container">
+          <h2 className="delete__modal-title">
+            Are you sure you want to delete this item?
+          </h2>
+          <p className="delete__modal-text"> This action is irreversible.</p>
+        </div>
         <div className="modal__button_container">
           <button
             onClick={handleCardDelete}
