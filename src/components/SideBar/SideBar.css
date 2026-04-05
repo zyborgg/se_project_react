@@ -1,12 +1,10 @@
 .sidebar {
-  font-style: bold;
   font-family: "Cabinent Grotesk", Arial, sans-serif;
 }
 
 .sidebar__username {
   line-height: 24px;
   font-weight: 700;
-  font-style: bold;
   width: 100%;
   font-size: 20px;
   white-space: nowrap;

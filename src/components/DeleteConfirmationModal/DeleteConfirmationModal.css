@@ -2,7 +2,7 @@
   visibility: hidden;
   font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
   font-size: 20px;
-  font-style: bold;
+  font-weight: 700;
   line-height: 24px;
   cursor: pointer;
   display: flex;
@@ -19,7 +19,6 @@
   border: none;
   background: none;
   font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
-  font-style: bold;
   font-weight: 700;
   cursor: pointer;
 }
@@ -27,7 +26,6 @@
 .delete__cancel-button {
   border: none;
   background: none;
-  font-style: bold;
   font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
   font-weight: 700;
   line-height: 24px;

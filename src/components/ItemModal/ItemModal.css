@@ -1,27 +1,16 @@
 .itemModal {
-  border-radius: 20px;
-  border: 1px;
-  border-color: rgba(0, 0, 0, 0.3);
   display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
-  height: 610px;
   background-color: rgba(243, 243, 243, 1);
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   visibility: hidden;
   font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 700;
-  font-style: bold;
   line-height: 24px;
-  cursor: pointer;
+  position: fixed;
 }
 
-.modal__is-opened {
+.modal_is-opened {
   visibility: visible;
 }
 
@@ -48,11 +37,11 @@
 }
 
 .itemModal__content {
-  position: relative;
-  border-radius: 20px;
   background-color: #ffffff;
-  border: 1px;
   box-sizing: border-box;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .itemModal__caption {

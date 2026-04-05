@@ -37,7 +37,3 @@ export default function ToggleSwitch() {
     </label>
   );
 }
-
-// CSS notes
-// transform: translateX(...)
-// mix-blend=module: ...

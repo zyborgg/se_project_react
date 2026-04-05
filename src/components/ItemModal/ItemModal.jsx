@@ -10,7 +10,7 @@ function ItemModal({
 }) {
   return (
     <div
-      className={`modal ${isOpen && "modal_is-opened"}`}
+      className={`modal itemModal ${isOpen && "modal_is-opened"}`}
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           onClose();
