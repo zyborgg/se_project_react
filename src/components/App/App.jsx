@@ -33,12 +33,11 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
-  // although the useState may not be used now these declarations are vital to the entire project
-  // the entire app functions off of the changing values of name, imageUrl, and weather.
-  // so removing them breaks everything. this does NOT need correcting just cause theyre greying out
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [weather, setWeather] = useState("");
+  // KEEP in case future project phases do need this and the useEffect with it
+  // leaving it commented out for now
+  // const [name, setName] = useState("");
+  // const [imageUrl, setImageUrl] = useState("");
+  // const [weather, setWeather] = useState("");
   const [onDelete, setOnDelete] = useState(false);
 
   const handleToggleSwitchChange = () => {
@@ -104,13 +103,15 @@ function App() {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    if (!activeModal) {
-      setName("");
-      setImageUrl("");
-      setWeather("");
-    }
-  }, [activeModal]);
+  // KEEP for now just leave commeneted out
+
+  // useEffect(() => {
+  //   if (!activeModal) {
+  //     setName("");
+  //     setImageUrl("");
+  //     setWeather("");
+  //   }
+  // }, [activeModal]);
 
   useEffect(() => {
     const handleEscClose = (e) => {
