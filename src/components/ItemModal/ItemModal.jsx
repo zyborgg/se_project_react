@@ -1,13 +1,7 @@
 import "./ItemModal.css";
 import whiteCloseButton from "../../assets/closeButtonWhite.svg";
 
-function ItemModal({
-  onClose,
-  card,
-  isOpen,
-  handleCardDelete,
-  openConfirmationModal,
-}) {
+function ItemModal({ onClose, card, isOpen, onDelete, openConfirmationModal }) {
   return (
     <div
       className={`modal itemModal ${isOpen && "modal_is-opened"}`}

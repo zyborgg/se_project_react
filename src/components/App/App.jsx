@@ -10,8 +10,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { addItem, getItems } from "../../utils/api";
-import { removeItem } from "../../utils/api";
+import { addItem, getItems, removeItem } from "../../utils/api";
 import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfirmationModal";
 
 function App() {
@@ -32,10 +31,14 @@ function App() {
   });
 
   const [clothingItems, setClothingItems] = useState([]);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
+  // although the useState may not be used now these declarations are vital to the entire project
+  // the entire app functions off of the changing values of name, imageUrl, and weather.
+  // so removing them breaks everything. this does NOT need correcting just cause theyre greying out
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [onDelete, setOnDelete] = useState(false);
 
   const handleToggleSwitchChange = () => {
@@ -171,7 +174,7 @@ function App() {
         />
         <DeleteConfirmationModal
           isOpen={activeModal === "delete__modal"}
-          handleCardDelete={() => handleCardDelete(selectedCard)}
+          onDelete={() => handleCardDelete(selectedCard)}
           onClose={closeActiveModal}
         />
       </div>

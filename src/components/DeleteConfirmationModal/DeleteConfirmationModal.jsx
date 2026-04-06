@@ -1,12 +1,7 @@
 import closeButton from "../../assets/closeButton.svg";
 import "./DeleteConfirmationModal.css";
 
-export function DeleteConfirmationModal({
-  handleCardDelete,
-  onClose,
-  isOpen,
-  openConfirmationModal,
-}) {
+export function DeleteConfirmationModal({ onDelete, onClose, isOpen }) {
   return (
     <div
       className={`delete__modal modal ${isOpen && "modal_is-opened"}`}
@@ -28,11 +23,7 @@ export function DeleteConfirmationModal({
           <p className="delete__modal-text"> This action is irreversible.</p>
         </div>
         <div className="modal__button_container">
-          <button
-            onClick={handleCardDelete}
-            type="button"
-            className="delete__button"
-          >
+          <button onClick={onDelete} type="button" className="delete__button">
             {" "}
             Yes, delete item
           </button>
