@@ -97,7 +97,7 @@ function App() {
       .catch(console.error);
 
     getItems()
-      .then((data) => {
+      .then(({ data }) => {
         setClothingItems(data);
       })
       .catch(console.error);
@@ -126,6 +126,14 @@ function App() {
       document.removeEventListener("keydown", handleEscClose);
     };
   }, []);
+
+  // useEffect(() => {
+  //   const handleSignIn = (e) => {
+  //     if (isSignedIn) {
+  //       route to something
+  //     }
+  //   }
+  // })
 
   return (
     <CurrentTemperatureUnitContext.Provider
