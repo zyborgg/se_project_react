@@ -21,3 +21,14 @@ export const signin = (email, password) => {
     body: JSON.stringify({ email, password }),
   }).then(handleServerResponse);
 };
+
+// token check
+export const checkToken = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};

@@ -39,6 +39,7 @@ function App() {
   // const [imageUrl, setImageUrl] = useState("");
   // const [weather, setWeather] = useState("");
   const [onDelete, setOnDelete] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -125,6 +126,16 @@ function App() {
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (!token) {
+      setIsLoading(false);
+      return;
+    }
+
+    checkToken(token);
   }, []);
 
   // useEffect(() => {
