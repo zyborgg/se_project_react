@@ -89,6 +89,35 @@ function App() {
       .catch(console.error);
   };
 
+  const handleLogin = (user) => {
+    const { email, password } = user;
+    signin({ email, password })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const handleRegistration = (user) => {
+    const { name, avatar, email, password } = user;
+    signup({ name, avatar, email, password })
+      .then((res) => {
+        closeActiveModal();
+        handleLogin({ email, password });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   useEffect(() => {
     getWeather(coordinates, apiKey)
       .then((data) => {
