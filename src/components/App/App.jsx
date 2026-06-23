@@ -59,12 +59,14 @@ function App() {
   };
 
   const onAddItem = (inputValues, handleReset) => {
+    const token = localStorage.getItem("jwt");
     const newCardData = {
       name: inputValues.name,
       imageUrl: inputValues.imageUrl,
       weather: inputValues.weather,
     };
-    addItem(newCardData)
+    api
+      .addItem(newCardData, token)
       .then((data) => {
         setClothingItems((prev) => [data, ...prev]);
         closeActiveModal();
@@ -79,7 +81,9 @@ function App() {
   };
 
   const handleCardDelete = (selectedCard) => {
-    removeItem(selectedCard._id)
+    const token = localStorage.getItem("jwt");
+    api
+      .removeItem(selectedCard._id, token)
       .then(() => {
         setClothingItems((prev) =>
           prev.filter((item) => item._id !== selectedCard._id),
@@ -87,6 +91,18 @@ function App() {
         closeActiveModal();
       })
       .catch(console.error);
+  };
+
+  const handleRegistration = (user) => {
+    const { name, avatar, email, password } = user;
+    signup({ name, avatar, email, password })
+      .then((res) => {
+        closeActiveModal();
+        handleLogin({ email, password });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const handleLogin = (user) => {
@@ -100,18 +116,6 @@ function App() {
       })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  const handleRegistration = (user) => {
-    const { name, avatar, email, password } = user;
-    signup({ name, avatar, email, password })
-      .then((res) => {
-        closeActiveModal();
-        handleLogin({ email, password });
       })
       .catch((err) => {
         console.error(err);
