@@ -14,7 +14,7 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
 
   return (
     <ModalWithForm
-      title="Log In"
+      title="Login"
       className={`modal modal_type_login ${isOpen ? "modal_is-opened" : ""}`}
       onClick={(e) => {
         if (e.target === e.currentTarget) {

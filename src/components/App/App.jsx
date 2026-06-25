@@ -14,6 +14,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { addItem, getItems, removeItem } from "../../utils/api";
 import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import LoginModal from "../LoginModal/LoginModal";
+import { signin } from "../../utils/auth";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
