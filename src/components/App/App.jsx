@@ -126,6 +126,20 @@ function App() {
     setActiveModal("login");
   };
 
+  // const openEditProfileModal = () => {
+  //   setActiveModal("edit-profile");
+  // };
+
+  // const handleEditProfileSubmit = (values, resetForm) => {
+  //   editProfile(values)
+  //     .then((updatedUser) => {
+  //       setCurrentUser(updatedUser);
+  //       resetForm();
+  //       closeActiveModal();
+  //     })
+  //     .catch(console.error);
+  // };
+
   useEffect(() => {
     getWeather(coordinates, apiKey)
       .then((data) => {
@@ -224,6 +238,11 @@ function App() {
             name="add-garment"
             onClose={closeActiveModal}
             onAddItem={onAddItem}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={closeActiveModal}
+            onSubmit={handleEditProfileSubmit}
           />
           <ItemModal
             isOpen={activeModal === "preview"}
