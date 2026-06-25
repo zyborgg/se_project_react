@@ -32,3 +32,15 @@ export const checkToken = (token) => {
     },
   }).then(handleServerResponse);
 };
+
+// update user
+export const updateUser = ({ name, avatar }) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(handleServerResponse);
+};

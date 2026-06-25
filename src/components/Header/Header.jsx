@@ -6,6 +6,7 @@ import logo from "../../assets/WTWRLogo.svg";
 import avatar from "../../assets/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 function Header({
   handleAddClick,
@@ -13,6 +14,7 @@ function Header({
   isLoggedIn,
   handleLogin,
   onClick,
+  setActiveModal,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
@@ -48,9 +50,18 @@ function Header({
             </div>
           </NavLink>
         ) : (
-          <button className="header__login-button" onClick={handleLogin}>
-            Log In
-          </button>
+          <div className="header__auth-buttons">
+            <button className="header__login-button" onClick={handleLogin}>
+              Log In
+            </button>
+
+            <button
+              className="header__register-button"
+              onClick={() => onClick("register")}
+            >
+              Register
+            </button>
+          </div>
         )}
       </div>
     </header>

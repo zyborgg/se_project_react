@@ -60,3 +60,9 @@
   font-weight: 700;
   cursor: pointer;
 }
+
+.header__register-button {
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}

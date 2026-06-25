@@ -3,8 +3,15 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import "./RegisterModal.css";
 
 const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
-  const defaultValues = { username: "", email: "", password: "", avatar: "" };
+  const defaultValues = { name: "", email: "", password: "", avatar: "" };
   const { values, handleChange, handleReset } = useForm(defaultValues);
+
+  // UNCOMMENT LATER
+  // const isFormValid =
+  // values.username &&
+  // values.email &&
+  // values.password &&
+  // values.avatar;
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -24,20 +31,21 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
       onClose={onClose}
       onSubmit={handleSubmit}
       buttonText="Submit"
-      isButtonDisabled={!isFormValid}
+      // isButtonDisabled={!isFormValid}
+      // fix later
     >
-      <label htmlFor="username" className="modal__label">
-        Username{""}
+      <label htmlFor="name" className="modal__label">
+        Name{""}
         <input
-          type="username"
-          name="username"
+          type="name"
+          name="name"
           className="modal__input"
-          id="username"
-          placeholder="Enter Username here"
+          id="name"
+          placeholder="Enter name here"
           required
-          minLegnth="1"
+          minLength="1"
           maxLength="30"
-          value={values.username}
+          value={values.name || ""}
           onChange={handleChange}
         />
       </label>
@@ -50,9 +58,9 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
           id="email"
           placeholder="Enter Email here"
           required
-          minLegnth="1"
+          minLength="1"
           maxLength="30"
-          value={values.email}
+          value={values.email || ""}
           onChange={handleChange}
         />
       </label>
@@ -65,9 +73,9 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
           id="registerPassword"
           placeholder="Enter Password here"
           required
-          minLegnth="1"
+          minLength="1"
           maxLength="30"
-          value={values.password}
+          value={values.password || ""}
           onChange={handleChange}
         />
       </label>
@@ -80,12 +88,14 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
           id="avatar"
           placeholder="Enter Avatar URL here"
           required
-          minLegnth="1"
+          minLength="1"
           maxLength="30"
-          value={values.avatar}
+          value={values.avatar || ""}
           onChange={handleChange}
         />
       </label>
     </ModalWithForm>
   );
 };
+
+export default RegisterModal;

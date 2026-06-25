@@ -15,6 +15,9 @@ import { addItem, getItems, removeItem } from "../../utils/api";
 import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import LoginModal from "../LoginModal/LoginModal";
 import { signin } from "../../utils/auth";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import { updateUser, register } from "../../utils/auth";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -94,7 +97,7 @@ function App() {
 
   const handleRegistration = (user) => {
     const { name, avatar, email, password } = user;
-    signup({ name, avatar, email, password })
+    register({ name, avatar, email, password })
       .then((res) => {
         closeActiveModal();
         handleLogin({ email, password });
@@ -126,19 +129,14 @@ function App() {
     setActiveModal("login");
   };
 
-  // const openEditProfileModal = () => {
-  //   setActiveModal("edit-profile");
-  // };
-
-  // const handleEditProfileSubmit = (values, resetForm) => {
-  //   editProfile(values)
-  //     .then((updatedUser) => {
-  //       setCurrentUser(updatedUser);
-  //       resetForm();
-  //       closeActiveModal();
-  //     })
-  //     .catch(console.error);
-  // };
+  const handleUpdateUser = (data) => {
+    updateUser(data)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal();
+      })
+      .catch((err) => console.error(err));
+  };
 
   useEffect(() => {
     getWeather(coordinates, apiKey)
@@ -199,8 +197,9 @@ function App() {
             <Header
               handleAddClick={handleAddClick}
               weatherData={weatherData}
-              onClick={handleLogin}
-              handleLogin={openLoginModal}
+              isLoggedIn={isLoggedIn}
+              handleLogin={() => setActiveModal("login")}
+              onClick={setActiveModal}
             />
             <Routes>
               <Route
@@ -220,12 +219,18 @@ function App() {
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onAddClick={handleAddClick}
+                    setActiveModal={setActiveModal}
                   />
                 }
               />
             </Routes>
             <Footer />
           </div>
+          <RegisterModal
+            isOpen={activeModal === "register"}
+            onClose={closeActiveModal}
+            onSubmit={handleRegistration}
+          />
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
@@ -242,7 +247,7 @@ function App() {
           <EditProfileModal
             isOpen={activeModal === "edit-profile"}
             onClose={closeActiveModal}
-            onSubmit={handleEditProfileSubmit}
+            onSubmit={handleUpdateUser}
           />
           <ItemModal
             isOpen={activeModal === "preview"}
