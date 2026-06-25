@@ -16,7 +16,7 @@ import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfir
 import LoginModal from "../LoginModal/LoginModal";
 import { signin } from "../../utils/auth";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
-import { updateUser, register } from "../../utils/auth";
+import { updateUser, register, checkToken } from "../../utils/auth";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [onDelete, setOnDelete] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
@@ -97,7 +97,7 @@ function App() {
 
   const handleRegistration = (user) => {
     const { name, avatar, email, password } = user;
-    register({ name, avatar, email, password })
+    register(user)
       .then((res) => {
         closeActiveModal();
         handleLogin({ email, password });
@@ -111,13 +111,13 @@ function App() {
     const { email, password } = user;
     signin({ email, password })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .then((res) => {
         localStorage.setItem("jwt", res.token);
+        return checkToken(res.token);
+        console.log("USER FROM TOKEN:", user);
+      })
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
         closeActiveModal();
       })
       .catch((err) => {
@@ -136,6 +136,16 @@ function App() {
         closeActiveModal();
       })
       .catch((err) => console.error(err));
+  };
+
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setCurrentUser(null);
+    setIsLoggedIn(false);
   };
 
   useEffect(() => {
@@ -179,12 +189,16 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
-    if (!token) {
-      setIsLoggedIn(false);
-      return;
-    }
+    if (!token) return;
 
-    checkToken(token);
+    checkToken(token)
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   return (
@@ -226,6 +240,10 @@ function App() {
             </Routes>
             <Footer />
           </div>
+          <Sidebar
+            onEditProfile={handleEditProfileClick}
+            onSignOut={handleSignOut}
+          />
           <RegisterModal
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}

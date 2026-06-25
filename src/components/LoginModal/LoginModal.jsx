@@ -9,7 +9,8 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onSubmit(values, handleReset);
+    onSubmit(values);
+    handleReset();
   }
 
   return (

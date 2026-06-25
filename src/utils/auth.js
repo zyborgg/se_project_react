@@ -1,7 +1,8 @@
 import { handleServerResponse, baseUrl } from "./api";
 
 // register
-export const register = (name, avatar, email, password) => {
+export const register = ({ name, avatar, email, password }) => {
+  console.log("REGISTER PAYLOAD:", { name, avatar, email, password });
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -12,7 +13,8 @@ export const register = (name, avatar, email, password) => {
 };
 
 // signin
-export const signin = (email, password) => {
+export const signin = ({ email, password }) => {
+  console.log("LOGIN PAYLOAD:", { email, password });
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {

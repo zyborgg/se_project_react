@@ -8,7 +8,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
 
   // UNCOMMENT LATER
   // const isFormValid =
-  // values.username &&
+  // values.name &&
   // values.email &&
   // values.password &&
   // values.avatar;

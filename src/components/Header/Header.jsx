@@ -3,7 +3,6 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/WTWRLogo.svg";
-import avatar from "../../assets/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
@@ -38,14 +37,14 @@ function Header({
         >
           + Add Clothes
         </button>
-        {currentUser && currentUser.name ? (
+        {isLoggedIn && currentUser ? (
           <NavLink className="header__nav-link" to="/profile">
             <div className="header__user-container">
               <p className="header__username">
                 <span className="header__avatar-placeholder">
-                  {currentUser.name.charAt(0)}
+                  {currentUser?.name?.charAt(0)}
                 </span>
-                {currentUser.name}
+                {currentUser?.name}
               </p>
             </div>
           </NavLink>

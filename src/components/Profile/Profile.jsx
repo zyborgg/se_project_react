@@ -6,7 +6,6 @@ export default function Profile({
   clothingItems,
   handleCardClick,
   onAddClick,
-  setActiveModal,
 }) {
   return (
     <section className="profile">
@@ -16,12 +15,6 @@ export default function Profile({
         clothingItems={clothingItems}
         onAddClick={onAddClick}
       />
-      <button
-        className="profile__edit-button"
-        onClick={() => setActiveModal("edit-profile")}
-      >
-        Edit profile
-      </button>
     </section>
   );
 }
