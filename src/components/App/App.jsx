@@ -13,6 +13,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { addItem, getItems, removeItem } from "../../utils/api";
 import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfirmationModal";
+import LoginModal from "../LoginModal/LoginModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -33,15 +34,10 @@ function App() {
 
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-
-  // KEEP in case future project phases do need this and the useEffect with it
-  // leaving it commented out for now
-  // const [name, setName] = useState("");
-  // const [imageUrl, setImageUrl] = useState("");
-  // const [weather, setWeather] = useState("");
   const [onDelete, setOnDelete] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -118,10 +114,15 @@ function App() {
       })
       .then((res) => {
         localStorage.setItem("jwt", res.token);
+        closeActiveModal();
       })
       .catch((err) => {
         console.error(err);
       });
+  };
+
+  const openLoginModal = () => {
+    setActiveModal("login");
   };
 
   useEffect(() => {
@@ -166,7 +167,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (!token) {
-      setIsLoading(false);
+      setIsLoggedIn(false);
       return;
     }
 
@@ -180,7 +181,12 @@ function App() {
       >
         <div className="app">
           <div className="app__content">
-            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+            <Header
+              handleAddClick={handleAddClick}
+              weatherData={weatherData}
+              onClick={handleLogin}
+              handleLogin={openLoginModal}
+            />
             <Routes>
               <Route
                 path="/"
@@ -205,6 +211,11 @@ function App() {
             </Routes>
             <Footer />
           </div>
+          <LoginModal
+            isOpen={activeModal === "login"}
+            onClose={closeActiveModal}
+            onSubmit={handleLogin}
+          />
           <AddItemModal
             isOpen={activeModal === "add-garment"}
             title="New Garment"

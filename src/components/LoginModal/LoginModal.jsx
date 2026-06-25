@@ -56,3 +56,5 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
     </ModalWithForm>
   );
 };
+
+export default LoginModal;
