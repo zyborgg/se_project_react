@@ -141,6 +141,25 @@ function App() {
     setActiveModal("edit-profile");
   };
 
+  const handleCardLike = ({ _id, likes }) => {
+    const token = localStorage.getItem("jwt");
+
+    // Check if the current user has liked this card
+    const isLiked = likes.some((id) => id === currentUser._id);
+
+    const apiCall = isLiked
+      ? api.removeCardLike(_id, token)
+      : api.addCardLike(_id, token);
+
+    apiCall
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) => (item._id === _id ? updatedCard : item)),
+        );
+      })
+      .catch(console.error);
+  };
+
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
@@ -212,6 +231,7 @@ function App() {
                     clothingItems={clothingItems}
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
                   />
                 }
               />

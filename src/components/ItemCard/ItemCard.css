@@ -26,3 +26,16 @@
   border-width: 1px;
   border-color: rgba(0, 0, 0, 0.3);
 }
+
+.card__like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.card__like-button_liked {
+  opacity: 1;
+  color: red;
+}
