@@ -145,7 +145,7 @@ function App() {
     const token = localStorage.getItem("jwt");
 
     // Check if the current user has liked this card
-    const isLiked = likes.some((id) => id === currentUser._id);
+    const isLiked = likes.some((_id) => _id === currentUser._id);
 
     const apiCall = isLiked
       ? api.removeCardLike(_id, token)

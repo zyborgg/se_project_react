@@ -2,8 +2,8 @@ import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
-
-  const isLiked = item.likes.some((id) => id === currentUser?._id);
+  const isLoggedIn = !!currentUser?._id;
+  const isLiked = item.likes.some((_id) => _id === currentUser?._id);
   const handleCardClick = () => {
     onCardClick(item);
   };
@@ -24,6 +24,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
       <button
         className={`card__like-button ${isLiked ? "card__like-button_liked" : ""}`}
         onClick={handleLike}
+        type="button"
       >
         ❤️
       </button>
