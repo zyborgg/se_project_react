@@ -113,10 +113,9 @@ function App() {
       .then((res) => {
         localStorage.setItem("jwt", res.token);
         return checkToken(res.token);
-        console.log("USER FROM TOKEN:", user);
       })
       .then((user) => {
-        setCurrentUser(user);
+        setCurrentUser(user.data);
         setIsLoggedIn(true);
         closeActiveModal();
       })
@@ -163,16 +162,6 @@ function App() {
       .catch(console.error);
   }, []);
 
-  // KEEP for now just leave commeneted out
-
-  // useEffect(() => {
-  //   if (!activeModal) {
-  //     setName("");
-  //     setImageUrl("");
-  //     setWeather("");
-  //   }
-  // }, [activeModal]);
-
   useEffect(() => {
     const handleEscClose = (e) => {
       if (e.key === "Escape") {
@@ -193,7 +182,7 @@ function App() {
 
     checkToken(token)
       .then((user) => {
-        setCurrentUser(user);
+        setCurrentUser(user.data);
         setIsLoggedIn(true);
       })
       .catch((err) => {
@@ -240,10 +229,6 @@ function App() {
             </Routes>
             <Footer />
           </div>
-          <Sidebar
-            onEditProfile={handleEditProfileClick}
-            onSignOut={handleSignOut}
-          />
           <RegisterModal
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}

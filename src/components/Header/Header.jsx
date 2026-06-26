@@ -42,9 +42,11 @@ function Header({
             <div className="header__user-container">
               <p className="header__username">
                 <span className="header__avatar-placeholder">
-                  {currentUser?.name?.charAt(0)}
+                  {currentUser?.name?.charAt(0).toUpperCase()}
                 </span>
-                {currentUser?.name}
+                <span className="header__username-text">
+                  {currentUser?.name}
+                </span>
               </p>
             </div>
           </NavLink>

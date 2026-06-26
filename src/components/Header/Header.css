@@ -66,3 +66,8 @@
   font-weight: 700;
   cursor: pointer;
 }
+
+.header__avatar-placeholder {
+  margin-right: 8px;
+  border: 1px;
+}
