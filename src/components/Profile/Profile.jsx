@@ -8,6 +8,8 @@ export default function Profile({
   clothingItems,
   handleCardClick,
   onAddClick,
+  onCardLike,
+  handleCardLike,
   setActiveModal,
 }) {
   const currentUser = useContext(CurrentUserContext);
@@ -24,6 +26,7 @@ export default function Profile({
         handleCardClick={handleCardClick}
         clothingItems={clothingItems}
         onAddClick={onAddClick}
+        onCardLike={onCardLike}
       />
     </section>
   );

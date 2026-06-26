@@ -6,7 +6,9 @@ import ItemCard from "../ItemCard/ItemCard";
 export default function ClothesSection({
   clothingItems,
   handleCardClick,
+  handleCardLike,
   onAddClick,
+  onCardLike,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const userItems = clothingItems.filter(
@@ -22,7 +24,12 @@ export default function ClothesSection({
       </div>
       <ul className="clothes-section__items">
         {userItems.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={handleCardClick} />
+          <ItemCard
+            key={item._id}
+            item={item}
+            onCardClick={handleCardClick}
+            onCardLike={onCardLike}
+          />
         ))}
       </ul>
     </div>

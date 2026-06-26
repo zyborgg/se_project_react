@@ -36,3 +36,23 @@ export const removeItem = (cardID, token) => {
     },
   }).then(handleServerResponse);
 };
+
+export const addCardLike = (cardID, token) => {
+  return fetch(`${baseUrl}/items/${cardID}/likes`, {
+    method: "PUT",
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};
+
+export const removeCardLike = (cardID, token) => {
+  return fetch(`${baseUrl}/items/${cardID}/likes`, {
+    method: "DELETE",
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};

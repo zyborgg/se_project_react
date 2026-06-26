@@ -1,3 +1,5 @@
+import { useContext, useEffect } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
@@ -14,20 +16,20 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   return (
     <li className="card">
-      <h2 className="card__name">{item.name}</h2>
-      <img
-        onClick={handleCardClick}
-        className="card__image"
-        src={item.imageUrl}
-        alt={item.name}
-      />
-      <button
-        className={`card__like-button ${isLiked ? "card__like-button_liked" : ""}`}
-        onClick={handleLike}
-        type="button"
-      >
-        ❤️
-      </button>
+      <div className="card__header">
+        <h2 className="card__name">{item.name}</h2>
+        <img
+          onClick={handleCardClick}
+          className="card__image"
+          src={item.imageUrl}
+          alt={item.name}
+        />
+        <button
+          className={`card__like-button ${isLiked ? "card__like-button_liked" : ""}`}
+          onClick={handleLike}
+          type="button"
+        ></button>
+      </div>
     </li>
   );
 }

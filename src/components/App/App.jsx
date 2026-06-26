@@ -11,7 +11,13 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { addItem, getItems, removeItem } from "../../utils/api";
+import {
+  addItem,
+  getItems,
+  removeItem,
+  addCardLike,
+  removeCardLike,
+} from "../../utils/api";
 import { DeleteConfirmationModal } from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import LoginModal from "../LoginModal/LoginModal";
 import { signin } from "../../utils/auth";
@@ -61,14 +67,14 @@ function App() {
   };
 
   const onAddItem = (inputValues, handleReset) => {
+    console.log("Submitting new item:", newCardData);
     const token = localStorage.getItem("jwt");
     const newCardData = {
       name: inputValues.name,
       imageUrl: inputValues.imageUrl,
       weather: inputValues.weather,
     };
-    api
-      .addItem(newCardData, token)
+    addItem(newCardData, token)
       .then((data) => {
         setClothingItems((prev) => [data, ...prev]);
         closeActiveModal();
@@ -84,8 +90,7 @@ function App() {
 
   const handleCardDelete = (selectedCard) => {
     const token = localStorage.getItem("jwt");
-    api
-      .removeItem(selectedCard._id, token)
+    removeItem(selectedCard._id, token)
       .then(() => {
         setClothingItems((prev) =>
           prev.filter((item) => item._id !== selectedCard._id),
@@ -148,8 +153,8 @@ function App() {
     const isLiked = likes.some((_id) => _id === currentUser._id);
 
     const apiCall = isLiked
-      ? api.removeCardLike(_id, token)
-      : api.addCardLike(_id, token);
+      ? removeCardLike(_id, token)
+      : addCardLike(_id, token);
 
     apiCall
       .then((updatedCard) => {
@@ -243,6 +248,7 @@ function App() {
                     clothingItems={clothingItems}
                     onAddClick={handleAddClick}
                     setActiveModal={setActiveModal}
+                    onCardLike={handleCardLike}
                   />
                 }
               />

@@ -3,9 +3,6 @@ import sunny from "../../assets/sunny.svg";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./WeatherCard.css";
 
-// TODO: Weather condition and isDay data will be used in next stage
-// to display dynamic weather images based on actual conditions
-// Removing it just because its not being used now doesnt make sense
 function WeatherCard({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   return (
