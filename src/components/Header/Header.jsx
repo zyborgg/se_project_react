@@ -40,7 +40,10 @@ function Header({
         {isLoggedIn && currentUser ? (
           <NavLink className="header__nav-link" to="/profile">
             <div className="header__user-container">
-              <p className="header__username">
+              <div className="header__username">
+                <span className="header__username-text">
+                  {currentUser?.name}
+                </span>
                 {currentUser?.avatar ? (
                   <img
                     src={currentUser.avatar}
@@ -52,11 +55,7 @@ function Header({
                     {currentUser?.name?.charAt(0).toUpperCase()}
                   </span>
                 )}
-
-                <span className="header__username-text">
-                  {currentUser?.name}
-                </span>
-              </p>
+              </div>
             </div>
           </NavLink>
         ) : (

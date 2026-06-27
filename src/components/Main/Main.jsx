@@ -5,13 +5,7 @@ import "../../vendor/fonts.css";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({
-  clothingItems,
-  weatherData,
-  handleCardClick,
-  onCardLike,
-  handleCardLike,
-}) {
+function Main({ clothingItems, weatherData, handleCardClick, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   return (
     <main>
@@ -32,7 +26,7 @@ function Main({
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick}
-                  onCardLike={handleCardLike}
+                  onCardLike={onCardLike}
                 />
               );
             })}

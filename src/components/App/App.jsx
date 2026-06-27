@@ -66,21 +66,26 @@ function App() {
     setSelectedCard(card);
   };
 
-  const onAddItem = (inputValues, handleReset) => {
-    console.log("Submitting new item:", newCardData);
-    const token = localStorage.getItem("jwt");
-    const newCardData = {
-      name: inputValues.name,
-      imageUrl: inputValues.imageUrl,
-      weather: inputValues.weather,
-    };
-    addItem(newCardData, token)
-      .then((data) => {
-        setClothingItems((prev) => [data, ...prev]);
-        closeActiveModal();
-        handleReset();
-      })
-      .catch(console.error);
+  const onAddItem = async (inputValues, handleReset) => {
+    try {
+      const token = localStorage.getItem("jwt");
+
+      const newCardData = {
+        name: inputValues.name.trim(),
+        imageUrl: inputValues.imageUrl.trim(),
+        weather: inputValues.weather,
+      };
+
+      const res = await addItem(newCardData, token);
+
+      setClothingItems((prev) => [res.data, ...prev]);
+
+      closeActiveModal();
+      handleReset();
+    } catch (err) {
+      const message = await err.text?.();
+      console.error("Add item error:", message || err);
+    }
   };
 
   const openConfirmationModal = (item) => {
