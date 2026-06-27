@@ -6,12 +6,11 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
   const defaultValues = { name: "", email: "", password: "", avatar: "" };
   const { values, handleChange, handleReset } = useForm(defaultValues);
 
-  // UNCOMMENT LATER
-  // const isFormValid =
-  // values.name &&
-  // values.email &&
-  // values.password &&
-  // values.avatar;
+  const isFormValid =
+    values.name.trim() !== "" &&
+    values.email.trim() !== "" &&
+    values.password.trim() !== "" &&
+    values.avatar.trim() !== "";
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -20,6 +19,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
 
   return (
     <ModalWithForm
+      name="register"
       title="Register new user"
       className={`modal modal_type_register ${isOpen ? "modal_is-opened" : ""}`}
       onClick={(e) => {
@@ -30,14 +30,14 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText="Submit"
-      // isButtonDisabled={!isFormValid}
-      // fix later
+      buttonText="Sign Up"
+      altText="or Log In"
+      isButtonDisabled={!isFormValid}
     >
       <label htmlFor="name" className="modal__label">
         Name{""}
         <input
-          type="name"
+          type="text"
           name="name"
           className="modal__input"
           id="name"
@@ -82,7 +82,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
       <label htmlFor="avatar" className="modal__label">
         Avatar{""}
         <input
-          type="imageUrl"
+          type="url"
           name="avatar"
           className="modal__input"
           id="avatar"

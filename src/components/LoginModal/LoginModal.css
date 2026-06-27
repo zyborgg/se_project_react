@@ -1,0 +1,22 @@
+.modal_type_login .modal__submit {
+  margin-top: 20px;
+  width: 128px;
+  height: 36px;
+  border-radius: 4px;
+}
+
+.modal_type_login .modal__submit {
+  opacity: 0.6;
+}
+
+.login-modal__alt-text {
+  margin-left: 12px;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+}
+
+.modal_type_login .modal__content {
+  width: 496px !important;
+  height: 304px !important;
+}

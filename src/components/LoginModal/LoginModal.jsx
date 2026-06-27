@@ -6,6 +6,8 @@ import "./LoginModal.css";
 const LoginModal = ({ isOpen, onSubmit, onClose }) => {
   const defaultValues = { email: "", password: "" };
   const { values, handleChange, handleReset } = useForm(defaultValues);
+  const isFormValid =
+    values.email.trim() !== "" && values.password.trim() !== "";
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -25,6 +27,9 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText="Log In"
+      altText="or Sign Up"
+      isButtonDisabled={!isFormValid}
     >
       <label htmlFor="email" className="modal__label">
         <input

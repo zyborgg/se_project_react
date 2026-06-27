@@ -117,3 +117,38 @@
   flex-direction: column;
   margin-bottom: 20px;
 }
+
+.modal_type_edit-profile .modal__content {
+  width: 496px;
+  min-height: 304px;
+}
+
+.modal_type_edit-profile .modal__submit {
+  margin-top: 20px;
+  width: 128px;
+  height: 36px;
+  border-radius: 4px;
+}
+
+.modal_type_edit-profile .modal__content,
+.modal_type_login .modal__content,
+.modal_type_register .modal__content {
+  width: 496px;
+  min-height: 304px;
+}
+
+.modal__button-row {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.modal__alt-text {
+  margin-left: 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.modal__content {
+  width: 496px;
+}

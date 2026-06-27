@@ -9,6 +9,7 @@ function ModalWithForm({
   onClose,
   onSubmit,
   isButtonDisabled,
+  altText,
   children,
 }) {
   return (
@@ -27,13 +28,16 @@ function ModalWithForm({
         </button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button
-            type="submit"
-            disabled={isButtonDisabled}
-            className="modal__submit"
-          >
-            {buttonText}
-          </button>
+          <div className="modal__button-row">
+            <button
+              type="submit"
+              disabled={isButtonDisabled}
+              className="modal__submit"
+            >
+              {buttonText}
+            </button>
+            {altText && <p className="modal__alt-text">{altText}</p>}
+          </div>
         </form>
       </div>
     </div>

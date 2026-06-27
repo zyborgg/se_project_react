@@ -1,0 +1,8 @@
+.modal__content_type_edit-profile {
+  width: 496px;
+  min-height: 304px;
+}
+
+.modal_type_edit-profile .modal__submit:hover {
+  opacity: 0.6;
+}
