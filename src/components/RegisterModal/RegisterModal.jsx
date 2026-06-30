@@ -49,13 +49,13 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="register-email" className="modal__label">
         Email{""}
         <input
           type="email"
           name="email"
           className="modal__input"
-          id="email"
+          id="register-email"
           placeholder="Enter Email here"
           required
           minLength="1"
@@ -64,13 +64,13 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="registerPassword" className="modal__label">
+      <label htmlFor="register-password" className="modal__label">
         Password{""}
         <input
           type="password"
           name="password"
           className="modal__input"
-          id="registerPassword"
+          id="register-password"
           placeholder="Enter Password here"
           required
           minLength="1"

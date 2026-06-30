@@ -2,7 +2,7 @@ import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
 
-function SideBar({ setActiveModal, onClick, onEditProfile, onSignOut }) {
+function SideBar({ setActiveModal, onSignOut }) {
   const currentUser = useContext(CurrentUserContext);
   return (
     <aside className="sidebar">

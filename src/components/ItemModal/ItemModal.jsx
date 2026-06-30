@@ -3,7 +3,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ItemModal.css";
 import whiteCloseButton from "../../assets/closeButtonWhite.svg";
 
-function ItemModal({ onClose, card, isOpen, onDelete, openConfirmationModal }) {
+function ItemModal({ onClose, card, isOpen, openConfirmationModal }) {
   const currentUser = useContext(CurrentUserContext);
 
   const isOwn = card.owner === currentUser?._id;

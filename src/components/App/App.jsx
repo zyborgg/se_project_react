@@ -24,6 +24,7 @@ import { signin } from "../../utils/auth";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { updateUser, register, checkToken } from "../../utils/auth";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import ProtectedRoute from "../ProtectedRoute";
 
 function App() {
   const navigate = useNavigate();
@@ -155,7 +156,7 @@ function App() {
     if (!currentUser) return;
     const token = localStorage.getItem("jwt");
 
-    const isLiked = likes.some((likeId) => _id === currentUser._id);
+    const isLiked = likes.some((likeId) => likeId === currentUser?._id);
 
     const apiCall = isLiked
       ? removeCardLike(_id, token)
@@ -174,6 +175,7 @@ function App() {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
     setIsLoggedIn(false);
+    navigate("/");
   };
 
   useEffect(() => {
@@ -242,6 +244,7 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     onCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />
@@ -255,6 +258,7 @@ function App() {
                       onAddClick={handleAddClick}
                       setActiveModal={setActiveModal}
                       onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
                     />
                   </ProtectedRoute>
                 }

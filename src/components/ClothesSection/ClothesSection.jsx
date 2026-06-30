@@ -6,9 +6,9 @@ import ItemCard from "../ItemCard/ItemCard";
 export default function ClothesSection({
   clothingItems,
   handleCardClick,
-  handleCardLike,
   onAddClick,
   onCardLike,
+  isLoggedIn,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const userItems = clothingItems.filter(
@@ -29,6 +29,7 @@ export default function ClothesSection({
             item={item}
             onCardClick={handleCardClick}
             onCardLike={onCardLike}
+            isLoggedIn={isLoggedIn}
           />
         ))}
       </ul>

@@ -41,7 +41,6 @@
   object-fit: cover;
   border-radius: 15px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  /* display: block; */
 }
 
 .card__like-button {
@@ -51,7 +50,7 @@
   background-position: center;
   background-size: contain;
   background-color: transparent;
-  border: 2px;
+  border: 2px solid transparent;
   width: 30px;
   height: 30px;
   cursor: pointer;

@@ -44,10 +44,9 @@
 }
 
 .delete__modal_content {
-  border-radius: 20px;
   box-sizing: border-box;
   border-radius: 20px;
-  border: 1px #0000003d;
+  border: 1px solid #0000003d;
   background: #ffffff;
   width: 670px;
   height: 280px;

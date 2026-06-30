@@ -11,22 +11,19 @@ export default function Profile({
   onCardLike,
   handleCardLike,
   setActiveModal,
+  isLoggedIn,
+  handleSignOut,
 }) {
   const currentUser = useContext(CurrentUserContext);
   return (
     <section className="profile">
-      <Sidebar
-        setActiveModal={setActiveModal}
-        onSignOut={() => {
-          localStorage.removeItem("jwt");
-          window.location.reload();
-        }}
-      />
+      <Sidebar setActiveModal={setActiveModal} onSignOut={handleSignOut} />
       <ClothesSection
         handleCardClick={handleCardClick}
         clothingItems={clothingItems}
         onAddClick={onAddClick}
         onCardLike={onCardLike}
+        isLoggedIn={isLoggedIn}
       />
     </section>
   );

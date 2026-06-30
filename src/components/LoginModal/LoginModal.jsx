@@ -32,12 +32,12 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
       altText="or Sign Up"
       isButtonDisabled={!isFormValid}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="login-email" className="modal__label">
         <input
           type="email"
           name="email"
           className="modal__input"
-          id="email"
+          id="login-email"
           placeholder="Email"
           required
           minLength="1"
@@ -46,12 +46,12 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="login-password" className="modal__label">
         <input
           type="password"
           name="password"
           className="modal__input"
-          id="password"
+          id="login-password"
           placeholder="Password"
           required
           minLength="1"
