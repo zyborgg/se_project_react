@@ -1,14 +1,9 @@
-// import blank from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-export default function ProtectedRoute({ signIn, onSubmit }) {
-  if (user === isSignedIn) {
-    // route to profile
-  } else {
-    // route to sign in
+export default function ProtectedRoute({ isLoggedIn, children }) {
+  if (!isLoggedIn) {
+    return <Navigate to="/" replace />;
   }
-  return (
-    <Navigation>
-      <Profile />
-    </Navigation>
-  );
+
+  return <Navigation>{children}</Navigation>;
 }

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { useEffect, useState } from "react";
 import "./App.css";
@@ -26,6 +26,7 @@ import { updateUser, register, checkToken } from "../../utils/auth";
 import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
+  const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -44,17 +45,19 @@ function App() {
 
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [onDelete, setOnDelete] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const handleAddClick = () => {
-    setActiveModal("add-garment");
+    if (isLoggedIn) {
+      setActiveModal("add-garment");
+    } else {
+      setActiveModal("login");
+    }
   };
 
   const closeActiveModal = () => {
@@ -128,6 +131,7 @@ function App() {
         setCurrentUser(user.data);
         setIsLoggedIn(true);
         closeActiveModal();
+        navigate("/");
       })
       .catch((err) => {
         console.error(err);
@@ -141,21 +145,17 @@ function App() {
   const handleUpdateUser = (data) => {
     updateUser(data)
       .then((updatedUser) => {
-        setCurrentUser(updatedUser);
+        setCurrentUser(updatedUser.data);
         closeActiveModal();
       })
       .catch((err) => console.error(err));
   };
 
-  const handleEditProfileClick = () => {
-    setActiveModal("edit-profile");
-  };
-
   const handleCardLike = ({ _id, likes }) => {
+    if (!currentUser) return;
     const token = localStorage.getItem("jwt");
 
-    // Check if the current user has liked this card
-    const isLiked = likes.some((_id) => _id === currentUser._id);
+    const isLiked = likes.some((likeId) => _id === currentUser._id);
 
     const apiCall = isLiked
       ? removeCardLike(_id, token)
@@ -248,13 +248,15 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    handleCardClick={handleCardClick}
-                    clothingItems={clothingItems}
-                    onAddClick={handleAddClick}
-                    setActiveModal={setActiveModal}
-                    onCardLike={handleCardLike}
-                  />
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Profile
+                      handleCardClick={handleCardClick}
+                      clothingItems={clothingItems}
+                      onAddClick={handleAddClick}
+                      setActiveModal={setActiveModal}
+                      onCardLike={handleCardLike}
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Routes>

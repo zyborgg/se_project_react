@@ -13,7 +13,6 @@ function Header({
   isLoggedIn,
   handleLogin,
   onClick,
-  setActiveModal,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
@@ -30,13 +29,15 @@ function Header({
       </p>
       <div className="header__right-section">
         <ToggleSwitch />
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-button"
-        >
-          + Add Clothes
-        </button>
+        {isLoggedIn ? (
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-button"
+          >
+            + Add Clothes
+          </button>
+        ) : null}
         {isLoggedIn && currentUser ? (
           <NavLink className="header__nav-link" to="/profile">
             <div className="header__user-container">
