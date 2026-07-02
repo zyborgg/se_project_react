@@ -139,8 +139,16 @@ function App() {
       });
   };
 
+  const handleToggle = () => {
+    setActiveModal((prev) => (prev === "login" ? "register" : "login"));
+  };
+
   const openLoginModal = () => {
     setActiveModal("login");
+  };
+
+  const openRegisterModal = () => {
+    setActiveModal("register");
   };
 
   const handleUpdateUser = (data) => {
@@ -165,7 +173,13 @@ function App() {
     apiCall
       .then((updatedCard) => {
         setClothingItems((cards) =>
-          cards.map((item) => (item._id === _id ? updatedCard : item)),
+          cards.map((item) =>
+            item._id === _id
+              ? isLiked
+                ? updatedCard.data
+                : updatedCard
+              : item,
+          ),
         );
       })
       .catch(console.error);
@@ -259,6 +273,7 @@ function App() {
                       setActiveModal={setActiveModal}
                       onCardLike={handleCardLike}
                       isLoggedIn={isLoggedIn}
+                      handleSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
                 }
@@ -270,11 +285,13 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onSubmit={handleRegistration}
+            handleToggle={handleToggle}
           />
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onSubmit={handleLogin}
+            handleToggle={handleToggle}
           />
           <AddItemModal
             isOpen={activeModal === "add-garment"}

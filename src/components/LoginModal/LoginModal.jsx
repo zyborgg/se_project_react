@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 
 import "./LoginModal.css";
 
-const LoginModal = ({ isOpen, onSubmit, onClose }) => {
+const LoginModal = ({ isOpen, onSubmit, onClose, handleToggle }) => {
   const defaultValues = { email: "", password: "" };
   const { values, handleChange, handleReset } = useForm(defaultValues);
   const isFormValid =
@@ -12,7 +12,11 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
   function handleSubmit(evt) {
     evt.preventDefault();
     onSubmit(values);
-    handleReset();
+    useEffect(() => {
+      if (isOpen) {
+        handleReset();
+      }
+    }, [isOpen]);
   }
 
   return (
@@ -31,6 +35,7 @@ const LoginModal = ({ isOpen, onSubmit, onClose }) => {
       buttonText="Log In"
       altText="or Sign Up"
       isButtonDisabled={!isFormValid}
+      handleToggle={handleToggle}
     >
       <label htmlFor="login-email" className="modal__label">
         <input

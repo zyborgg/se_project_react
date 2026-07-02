@@ -143,12 +143,19 @@
   margin-top: 20px;
 }
 
-.modal__alt-text {
-  margin-left: 12px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
 .modal__content {
   width: 496px;
+}
+
+.modal__toggle-text {
+  border: none;
+  margin-left: 12px;
+  cursor: pointer;
+  background: none;
+  font-size: 16px;
+  color: #000000;
+  opacity: 0.5;
+  line-height: 20px;
+  padding-top: 16px;
+  font-weight: 700;
 }

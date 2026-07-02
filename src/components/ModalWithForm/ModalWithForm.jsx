@@ -10,6 +10,7 @@ function ModalWithForm({
   onSubmit,
   isButtonDisabled,
   altText,
+  handleToggle,
   children,
 }) {
   return (
@@ -36,7 +37,15 @@ function ModalWithForm({
             >
               {buttonText}
             </button>
-            {altText && <p className="modal__alt-text">{altText}</p>}
+            {altText && (
+              <button
+                type="button"
+                className="modal__toggle-text"
+                onClick={handleToggle}
+              >
+                {altText}
+              </button>
+            )}
           </div>
         </form>
       </div>

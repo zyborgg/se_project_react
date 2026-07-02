@@ -8,10 +8,3 @@
 .modal_type_register .modal__submit:hover {
   opacity: 0.6;
 }
-
-.register-modal__alt-text {
-  margin-left: 12px;
-  font-size: 14px;
-  color: #000;
-  cursor: pointer;
-}

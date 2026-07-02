@@ -2,7 +2,7 @@ import { useForm } from "../../hooks/useForm.js";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
 import "./RegisterModal.css";
 
-const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
+const RegisterModal = ({ isOpen, onSubmit, onClose, handleToggle }) => {
   const defaultValues = { name: "", email: "", password: "", avatar: "" };
   const { values, handleChange, handleReset } = useForm(defaultValues);
 
@@ -33,6 +33,7 @@ const RegisterModal = ({ isOpen, onSubmit, onClose }) => {
       buttonText="Sign Up"
       altText="or Log In"
       isButtonDisabled={!isFormValid}
+      handleToggle={handleToggle}
     >
       <label htmlFor="name" className="modal__label">
         Name{""}
