@@ -12,12 +12,13 @@ const LoginModal = ({ isOpen, onSubmit, onClose, handleToggle }) => {
   function handleSubmit(evt) {
     evt.preventDefault();
     onSubmit(values);
-    useEffect(() => {
-      if (isOpen) {
-        handleReset();
-      }
-    }, [isOpen]);
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      handleReset();
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
