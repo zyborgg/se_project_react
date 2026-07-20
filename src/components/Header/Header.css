@@ -92,3 +92,55 @@
   font-weight: 600;
   margin-right: 8px;
 }
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 18px;
+  }
+
+  .header__right-section {
+    gap: 12px;
+  }
+
+  .header__avatar {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .header__logo {
+    margin-right: 0;
+  }
+
+  .header__right-section {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header__add-clothes-button {
+    font-size: 16px;
+  }
+
+  .header__username {
+    font-size: 16px;
+  }
+
+  .header__avatar {
+    width: 28px;
+    height: 28px;
+  }
+}

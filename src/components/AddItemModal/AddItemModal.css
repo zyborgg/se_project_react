@@ -1,0 +1,13 @@
+.modal_type_add-garment .modal__content {
+  max-width: 496px;
+  max-height: 436px;
+}
+
+@media screen and (max-width: 480px) {
+  .modal_type_add-garment .modal__content {
+    width: 90% !important;
+    max-width: 320px !important;
+    max-height: none !important;
+    padding: 20px;
+  }
+}

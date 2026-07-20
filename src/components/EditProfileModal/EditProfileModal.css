@@ -6,3 +6,11 @@
 .modal_type_edit-profile .modal__submit:hover {
   opacity: 0.6;
 }
+
+@media screen and (max-width: 480px) {
+  .modal__content_type_edit-profile {
+    width: 90% !important;
+    min-height: auto;
+    padding: 20px;
+  }
+}

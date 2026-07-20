@@ -1,4 +1,4 @@
-export const baseUrl = "http://localhost:3001";
+export const baseUrl = "https://api.screamingturnips.jumpingcrab.com";
 
 const headers = {
   "Content-Type": "application/json",

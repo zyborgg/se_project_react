@@ -73,3 +73,34 @@
   position: relative;
   bottom: 94px;
 }
+
+@media screen and (max-width: 480px) {
+  .itemModal__image {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .itemModal__content {
+    width: 90%;
+    max-width: 320px;
+    border-radius: 12px;
+  }
+
+  .itemModal__caption,
+  .itemModal__weather {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .itemModal__delete {
+    padding-left: 0 !important;
+    bottom: 0 !important;
+    position: static !important;
+
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 18px;
+  }
+}

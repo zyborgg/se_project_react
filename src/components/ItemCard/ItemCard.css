@@ -63,3 +63,34 @@
   opacity: 1;
   cursor: pointer;
 }
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+  .card {
+    width: 260px;
+    height: 260px;
+  }
+
+  .card__image {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .card {
+    width: 100%;
+    height: auto;
+  }
+
+  .card__image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
+  .card__name {
+    font-size: 16px;
+  }
+}

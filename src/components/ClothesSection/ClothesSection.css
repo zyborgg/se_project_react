@@ -39,3 +39,31 @@
   line-height: 100%;
   font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
 }
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+  .clothes-section__items {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .clothes-section__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .clothes-section__items {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .clothes-section__text,
+  .clothes-section__button {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 16px;
+  }
+}

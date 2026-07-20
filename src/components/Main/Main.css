@@ -16,3 +16,27 @@
   margin: 0;
   font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
 }
+
+.cards__text-login {
+  font-family: "Cabinent Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  text-align: center;
+  line-height: 100%;
+  font-weight: 700;
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+  .cards__list {
+    justify-content: center;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .cards__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+  }
+}
