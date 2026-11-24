@@ -4,6 +4,7 @@ import "./Main.css";
 import "../../vendor/fonts.css";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import { showcaseOwnerId } from "../../utils/constants";
 
 function Main({
   clothingItems,
@@ -13,6 +14,13 @@ function Main({
   isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+
+  // Logged-out visitors see the site owner's wardrobe as a showcase.
+  const visibleItems =
+    isLoggedIn || !showcaseOwnerId
+      ? clothingItems
+      : clothingItems.filter((item) => item.owner === showcaseOwnerId);
+
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
@@ -21,29 +29,28 @@ function Main({
           Today is {weatherData.temp[currentTemperatureUnit]} °/ You May want to
           wear:
         </p>
-        {isLoggedIn ? (
-          <ul className="cards__list">
-            {clothingItems
-              .filter((item) => {
-                return item.weather === weatherData.type;
-              })
-              .map((item) => {
-                return (
-                  <ItemCard
-                    key={item._id}
-                    item={item}
-                    onCardClick={handleCardClick}
-                    onCardLike={onCardLike}
-                    isLoggedIn={isLoggedIn}
-                  />
-                );
-              })}
-          </ul>
-        ) : (
-          <p className="cards__text-login">
-            Log in to see clothing recommendations!
+        {!isLoggedIn && (
+          <p className="cards__note">
+            Showing a sample wardrobe. Sign up to build your own.
           </p>
         )}
+        <ul className="cards__list">
+          {visibleItems
+            .filter((item) => {
+              return item.weather === weatherData.type;
+            })
+            .map((item) => {
+              return (
+                <ItemCard
+                  key={item._id}
+                  item={item}
+                  onCardClick={handleCardClick}
+                  onCardLike={onCardLike}
+                  isLoggedIn={isLoggedIn}
+                />
+              );
+            })}
+        </ul>
       </section>
     </main>
   );
