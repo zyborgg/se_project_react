@@ -1,4 +1,6 @@
-export const coordinates = {
+// Used when the browser can't share the user's location
+// (permission denied, unsupported browser, or timeout).
+export const defaultCoordinates = {
   latitude: 33.13036,
   longitude: -117.085358,
 };

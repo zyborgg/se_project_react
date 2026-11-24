@@ -2,7 +2,8 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { useEffect, useState } from "react";
 import "./App.css";
-import { coordinates, apiKey } from "../../utils/constants";
+import { apiKey } from "../../utils/constants";
+import { getUserCoordinates } from "../../utils/location";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -193,7 +194,8 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, apiKey)
+    getUserCoordinates()
+      .then((coords) => getWeather(coords, apiKey))
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);

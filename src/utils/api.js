@@ -1,4 +1,7 @@
-export const baseUrl = "https://api.screamingturnips.jumpingcrab.com";
+// Set in .env.production for the deployed site; local dev uses the
+// Express server running on port 3001.
+export const baseUrl =
+  import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 const headers = {
   "Content-Type": "application/json",
